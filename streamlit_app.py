@@ -45,7 +45,7 @@ if prompt := st.chat_input("Escribe algo para P.A.O..."):
         st.markdown(prompt)
 
     search_context = search_web(prompt)
-
+    
     messages_for_groq = [{"role": "system", "content": system_prompt}]
     for m in st.session_state.messages:
         messages_for_groq.append({"role": m["role"], "content": m["content"]})
@@ -54,7 +54,7 @@ if prompt := st.chat_input("Escribe algo para P.A.O..."):
         messages_for_groq[-1]["content"] = f"""
         [Información obtenida de internet en tiempo real]:
         {search_context}
-
+        
         [Mensaje del usuario]:
         {prompt}
         """
@@ -71,4 +71,5 @@ if prompt := st.chat_input("Escribe algo para P.A.O..."):
             st.markdown(response)
             st.session_state.messages.append({"role": "assistant", "content": response})
         except Exception as e:
-            st.error("¡Ay, Gabriel! Tuvimos un pequeño tropiezo técnico, pero ya mismo lo resolvemos. 😊")
+            st.error(f"¡Vaya! Detalle técnico del error: {e}")
+            
