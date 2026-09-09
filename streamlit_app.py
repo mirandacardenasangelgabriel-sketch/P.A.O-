@@ -62,7 +62,7 @@ if prompt := st.chat_input("Escribe algo para P.A.O..."):
     with st.chat_message("assistant"):
         try:
             completion = client.chat.completions.create(
-                model="llama-3.3-70b-versatile",
+                model="llama-3.1-70b-versatile",
                 messages=messages_for_groq,
                 temperature=0.7,
                 max_tokens=2048
